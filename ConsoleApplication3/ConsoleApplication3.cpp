@@ -9,7 +9,7 @@ int main()
 {
   cvector<int> MeinVektor1;
 
-  for (size_t i = 0; i < 1000; i++)
+  for (size_t i = 0; i < 1010; i++)
   {
     MeinVektor1.pushback(i);
     std::cout << "Durchgang " << i << ": " << MeinVektor1.getSize() << std::endl;
