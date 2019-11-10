@@ -74,7 +74,7 @@ public:
     m_sizenow = 0;
   }
 
-  cvector(cvector& v)
+  cvector(const cvector& v)
   {
     //copy-constructor from cvector v
 
@@ -104,7 +104,7 @@ public:
     m_capnow = 0;
   }
 
-  void pushback(T& data)
+  void pushback(const T& data)
   {
     //if actual used space of array reaches allocated capacity  
     //-resize array with double size 
@@ -157,6 +157,13 @@ public:
     return m_data[elemNum];
   }
 
-
+  T operator[](size_t elemNum) const
+  {
+    if (elemNum >= m_sizenow)
+    {
+      return 0;
+    }
+    return m_data[elemNum];
+  }
 
 };
