@@ -46,7 +46,6 @@ private:
   }
 
 
-
 public:
   cvector()
   {
@@ -101,7 +100,7 @@ public:
     m_capnow = 0;
   }
 
-  void pushback(const T& data)
+  void push_back(const T& data)
   {
     //if actual used space of array reaches allocated capacity  
     //-resize array with double size 
@@ -115,17 +114,20 @@ public:
     m_sizenow++;
   }
 
-  void popback()
+  void pop_back()
   {
     //delete Data of last used space of array
     //decrement actual used space
     //if actual used space is smaller than 1/4 of allocated capacity
     //-resize array to 1/2 of actual capacity
-    m_data[m_sizenow] = 0;
-    m_sizenow--;
-    if (m_sizenow < (0.25*m_capnow))
+    if (m_sizenow > 0)
     {
-      resizelocal(0.5* m_capnow);
+      m_data[m_sizenow] = 0;
+      m_sizenow--;
+      if (m_sizenow < (0.25*m_capnow))
+      {
+        resizelocal(0.5* m_capnow);
+      }
     }
   }
 
@@ -137,11 +139,13 @@ public:
 
   size_t size() const
   {
+    //return actual used space of vector
     return m_sizenow;
   }
 
   size_t capacity() const
   {
+    //return actual Capacity of vector
     return m_capnow;
   }
 
@@ -180,6 +184,7 @@ public:
 
   void operator=(const cvector& v)
   {
+    //copy given vector to this vector
     if (m_data != nullptr)
     {
       delete[] m_data;
