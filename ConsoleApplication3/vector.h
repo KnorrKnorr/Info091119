@@ -138,12 +138,12 @@ public:
     resizelocal(value);
   }
 
-  size_t getSize()
+  size_t size() const
   {
     return m_sizenow;
   }
 
-  size_t getCapacity()
+  size_t capacity() const
   {
     return m_capnow;
   }
