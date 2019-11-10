@@ -19,7 +19,7 @@ private:
   {
     //mk temp array with size newsize
     //if newCap is bigger than used space
-    //-copy all elements of old array (to m_data[m_sizenow]), size stays same, cap gets bigger
+    //-copy all elements of old array to new array, size stays same, cap gets bigger
     //-else if newCap is equal or smaller than used space
     //-fullfill the new array with old data, size gets smaller, cap get smaller
     //delete old array
