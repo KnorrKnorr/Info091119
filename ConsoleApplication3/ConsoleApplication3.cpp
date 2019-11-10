@@ -7,6 +7,7 @@
 
 int main()
 {
+  //HIER IST ALLES NUR TEST
   cvector<size_t> MeinVektor1;
 
   size_t test = 1000;
@@ -25,14 +26,19 @@ int main()
   }
   
 
-  /*MeinVektor1.resize(100);
-  std::cout << "resize(10)" << ": " << MeinVektor1.size() << std::endl;
+  MeinVektor1.resize(100);
+  std::cout << "resize(100)" << ": " << MeinVektor1.size() << std::endl;
+  std::cout << MeinVektor1.capacity() << std::endl;
+
+  MeinVektor1.resize(3);
+  std::cout << "resize(3)" << ": " << MeinVektor1.size() << std::endl;
   std::cout << MeinVektor1.capacity() << std::endl;
 
   MeinVektor1.resize(100);
-  std::cout << "resize(10)" << ": " << MeinVektor1.size() << std::endl;
+  std::cout << "resize(100)" << ": " << MeinVektor1.size() << std::endl;
   std::cout << MeinVektor1.capacity() << std::endl;
-  */
+  
+  std::cout << "END" << MeinVektor1.at(2) << std::endl;
 
 
   /*for (size_t i = 0; i < 10; i++)

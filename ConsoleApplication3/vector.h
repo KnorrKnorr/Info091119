@@ -31,18 +31,12 @@ private:
 
     if (newCap > m_sizenow)
     {
-      for (size_t i = 0; i < m_sizenow; i++)
-      {
-        newDataTemp[i] = m_data[i];
-      }
+      std::copy(m_data, m_data + m_sizenow, newDataTemp);
       m_capnow = newCap;
     }
     else
     {
-      for (size_t i = 0; i < newCap; i++)
-      {
-        newDataTemp[i] = m_data[i];
-      }
+      std::copy(m_data, m_data + newCap, newDataTemp);
       m_sizenow = newCap;
       m_capnow = newCap;
     }
