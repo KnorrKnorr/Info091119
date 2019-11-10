@@ -61,6 +61,9 @@ public:
     //mk array with m_capnow capacity
     if (capacity == 0)
     {
+      m_sizenow = 0;
+      m_capnow = 0;
+      m_data = nullptr;
       return;
     }
     m_data = new T[capacity];
@@ -91,7 +94,7 @@ public:
   {
     if (m_data != nullptr)
     {
-      delete m_data;
+      delete[] m_data;
       m_data = nullptr;
     }
     m_sizenow = 0;
@@ -175,7 +178,7 @@ public:
     return m_data[elemNum];
   }
 
-  cvector& operator=(const cvector& v)
+  void operator=(const cvector& v)
   {
     if (m_data != nullptr)
     {
@@ -183,8 +186,9 @@ public:
     }
     m_capnow = v.m_capnow;
     m_sizenow = v.m_sizenow;
+    m_data = new T[m_capnow];
     std::copy(v.m_data, v.m_data + m_sizenow, m_data);
 
-    return cvector;
+    
   }
 };

@@ -9,13 +9,26 @@ int main()
 {
   //HIER IST ALLES NUR TEST
   cvector<size_t> MeinVektor1;
+  cvector<size_t> MeinVektor2;
 
   size_t test = 1000;
   MeinVektor1.pushback(test);
-  std::cout << "Intsaziierung :" << ": " << MeinVektor1.size() << std::endl;
+  MeinVektor1.pushback(test-1);
+  std::cout << "Mein1 size: "  << MeinVektor1.size() << std::endl;
+  std::cout << "Mein1 cap: " << MeinVektor1.capacity() << std::endl;
+  std::cout << "Mein1 Wert: " << MeinVektor1[0] << std::endl;
+  std::cout << "Mein1 Wert: " << MeinVektor1[1] << std::endl;
+
+  MeinVektor2 = MeinVektor1;
   
-  std::cout << MeinVektor1.capacity() << std::endl;
-  std::cout << "Wert " << MeinVektor1[0] << std::endl;
+  std::cout << "Mein2 size: " << MeinVektor2.size() << std::endl;
+  std::cout << "Mein2 cap: " << MeinVektor2.capacity() << std::endl;
+  std::cout << "Mein2 Wert: " << MeinVektor2[0] << std::endl;
+  std::cout << "Mein2 Wert: " << MeinVektor2[1] << std::endl;
+  
+  
+
+  /*
 
   for (size_t i = 0; i < 13; i++)
   {
@@ -39,7 +52,7 @@ int main()
   std::cout << MeinVektor1.capacity() << std::endl;
   
   std::cout << "END" << MeinVektor1.at(2) << std::endl;
-
+  */
 
   /*for (size_t i = 0; i < 10; i++)
   {
