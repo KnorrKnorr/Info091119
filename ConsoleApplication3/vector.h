@@ -74,6 +74,25 @@ public:
     m_sizenow = 0;
   }
 
+  cvector(cvector& v)
+  {
+    //copy-constructor from cvector v
+
+    m_capnow = v.m_capnow;
+    m_sizenow = v.m_sizenow;
+
+    m_data = new T[m_capnow];
+
+    if (m_sizenow > 0)
+    {
+      std::copy(v.m_data, v.m_data + m_sizenow, m_data);
+    }
+    else
+    {
+      m_data = nullptr;
+    }
+  }
+
   ~cvector()
   {
     delete m_data;
