@@ -95,8 +95,11 @@ public:
 
   ~cvector()
   {
-    delete m_data;
-    m_data = nullptr;
+    if (m_data != nullptr)
+    {
+      delete m_data;
+      m_data = nullptr;
+    }
     m_sizenow = 0;
     m_capnow = 0;
   }
