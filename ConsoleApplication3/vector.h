@@ -83,7 +83,7 @@ public:
     m_capnow = 0;
   }
 
-  void pushback(T data)
+  void pushback(T& data)
   {
     //if actual used space of array reaches allocated capacity  
     //-resize array with double size 
