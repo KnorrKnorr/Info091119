@@ -61,18 +61,17 @@ public:
     m_capnow = 1;
   }
 
-  cvector(size_t size, T data)
+  cvector(size_t capacity)
   {
     //mk array with Size size
     //write Data data to first place of the array
-    if (size == 0)
+    if (capacity == 0)
     {
       return;
     }
-    m_data = new T[size];
-    m_capnow = size;
-    m_data[0] = data;
-    m_sizenow = 1;
+    m_data = new T[capacity];
+    m_capnow = capacity;
+    m_sizenow = 0;
   }
 
   ~cvector()
@@ -111,10 +110,10 @@ public:
     }
   }
 
-  void resize(size_t newSize)
+  void resize(size_t value)
   {
     //call resizelocal
-    resizelocal(newSize);
+    resizelocal(value);
   }
 
   size_t getSize()
