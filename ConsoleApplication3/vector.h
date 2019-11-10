@@ -42,9 +42,9 @@ private:
       for (size_t i = 0; i < newCap; i++)
       {
         newDataTemp[i] = m_data[i];
-        m_sizenow = newCap;
-        m_capnow = newCap;
       }
+      m_sizenow = newCap;
+      m_capnow = newCap;
     }
     delete[] m_data;
     m_data = newDataTemp;
