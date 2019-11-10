@@ -175,5 +175,16 @@ public:
     return m_data[elemNum];
   }
 
+  cvector& operator=(const cvector& v)
+  {
+    if (m_data != nullptr)
+    {
+      delete[] m_data;
+    }
+    m_capnow = v.m_capnow;
+    m_sizenow = v.m_sizenow;
+    std::copy(v.m_data, v.m_data + m_sizenow, m_data);
 
+    return cvector;
+  }
 };
