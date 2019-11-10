@@ -18,7 +18,10 @@ private:
   void resizelocal(size_t newCap)
   {
     //mk temp array with size newsize
-    //cp all Elements to m_sizenow to temporary array
+    //if newCap is bigger than used space
+    //-copy all elements of old array (to m_data[m_sizenow]), size stays same, cap gets bigger
+    //-else if newCap is equal or smaller than used space
+    //-fullfill the new array with old data, size gets smaller, cap get smaller
     //delete old array
     //m_data points to new array
     //temp array pointer to nullptr
@@ -26,15 +29,26 @@ private:
     T* newDataTemp;
     newDataTemp = new T[newCap];
 
-    for (size_t i = 0; i < m_sizenow; i++)
+    if (newCap > m_sizenow)
     {
-      newDataTemp[i] = m_data[i];
+      for (size_t i = 0; i < m_sizenow; i++)
+      {
+        newDataTemp[i] = m_data[i];
+      }
+      m_capnow = newCap;
+    }
+    else
+    {
+      for (size_t i = 0; i < newCap; i++)
+      {
+        newDataTemp[i] = m_data[i];
+        m_sizenow = newCap;
+        m_capnow = newCap;
+      }
     }
     delete[] m_data;
     m_data = newDataTemp;
-    newDataTemp = nullptr;
-
-    m_capnow = newCap;
+    newDataTemp = nullptr;    
   }
 
 
@@ -49,7 +63,7 @@ public:
 
   cvector(size_t size, T data)
   {
-    //make array with Size size
+    //mk array with Size size
     //write Data data to first place of the array
     if (size == 0)
     {
@@ -72,7 +86,7 @@ public:
   void pushback(T data)
   {
     //if actual used space of array reaches allocated capacity  
-    //-resize array with double size
+    //-resize array with double size 
     //write Data data in first free place of array
     //increment actual used space
     if (m_sizenow >= m_capnow)
@@ -99,26 +113,8 @@ public:
 
   void resize(size_t newSize)
   {
-    //mk temp array with size newsize
-    //cp all Elements to m_data[newsize] to new array
-    //delete old array m_data
-    //m_data points to new array
-    //temp array pointer to nullptr
-    //m_capnow = newSize
-    //m_sizenow = newSize
-    T* newDataTemp;
-    newDataTemp = new T[newSize];
-
-    for (size_t i = 0; i < newSize; i++)
-    {
-      newDataTemp[i] = m_data[i];
-    }
-    delete[] m_data;
-    m_data = newDataTemp;
-    newDataTemp = nullptr;
-
-    m_capnow = newSize;
-    m_sizenow = newSize;
+    //call resizelocal
+    resizelocal(newSize);
   }
 
   size_t getSize()
