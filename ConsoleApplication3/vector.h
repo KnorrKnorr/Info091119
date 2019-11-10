@@ -56,6 +56,7 @@ private:
 public:
   cvector()
   {
+    //even standard constructor immediately allocates one element 
     m_data = new T[1];
     m_sizenow = 0;
     m_capnow = 1;
@@ -63,8 +64,7 @@ public:
 
   cvector(size_t capacity)
   {
-    //mk array with Size size
-    //write Data data to first place of the array
+    //mk array with m_capnow capacity
     if (capacity == 0)
     {
       return;
