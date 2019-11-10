@@ -15,7 +15,7 @@ private:
   //actual capacity
   size_t m_capnow;
 
-  void resize(size_t newCap)
+  void resizelocal(size_t newCap)
   {
     //mk temp array with size newsize
     //cp all Elements to m_sizenow to temporary array
@@ -77,7 +77,7 @@ public:
     //increment actual used space
     if (m_sizenow >= m_capnow)
     {
-      resize(2*m_capnow);
+      resizelocal(2*m_capnow);
     }
     m_data[m_sizenow] = data;
     m_sizenow++;
@@ -93,8 +93,32 @@ public:
     m_sizenow--;
     if (m_sizenow < (0.25*m_capnow))
     {
-      resize(0.5* m_capnow);
+      resizelocal(0.5* m_capnow);
     }
+  }
+
+  void resize(size_t newSize)
+  {
+    //mk temp array with size newsize
+    //cp all Elements to m_data[newsize] to new array
+    //delete old array m_data
+    //m_data points to new array
+    //temp array pointer to nullptr
+    //m_capnow = newSize
+    //m_sizenow = newSize
+    T* newDataTemp;
+    newDataTemp = new T[newSize];
+
+    for (size_t i = 0; i < newSize; i++)
+    {
+      newDataTemp[i] = m_data[i];
+    }
+    delete[] m_data;
+    m_data = newDataTemp;
+    newDataTemp = nullptr;
+
+    m_capnow = newSize;
+    m_sizenow = newSize;
   }
 
   size_t getSize()
