@@ -21,7 +21,7 @@ int main()
     MeinVektor1.pushback(i);
     std::cout << "Durchgang " << i << ": " << MeinVektor1.size() << std::endl;
     std::cout << MeinVektor1.capacity() << std::endl;
-    std::cout << "Wert " << MeinVektor1[i] << std::endl;
+    std::cout << "Wert " << MeinVektor1.at(i+1) << std::endl;
   }
   
 

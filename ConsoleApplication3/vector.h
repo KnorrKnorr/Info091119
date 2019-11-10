@@ -148,22 +148,38 @@ public:
     return m_capnow;
   }
 
-  T operator[](size_t elemNum)
+  T& operator[](size_t elemNum)
   {
-    if (elemNum >= m_sizenow)
+    //if m_data exists and element m_data[elemNum] exists, return m_data[elemNum]
+    if (elemNum >= m_sizenow || m_data == nullptr)
     {
-      return 0;
+      //return 0;
+      throw std::invalid_argument("");
     }
     return m_data[elemNum];
   }
 
-  T operator[](size_t elemNum) const
+  T& operator[](size_t elemNum) const
   {
-    if (elemNum >= m_sizenow)
+    //if m_data exists and element m_data[elemNum] exists, return m_data[elemNum]
+    if (elemNum >= m_sizenow || m_data == nullptr)
     {
-      return 0;
+      //return 0;
+      throw std::invalid_argument("");
     }
     return m_data[elemNum];
   }
+
+  T& at(size_t elemNum)
+  {
+    //if m_data exists and element m_data[elemNum] exists, return m_data[elemNum]
+    if (elemNum >= m_sizenow || m_data == nullptr)
+    {
+      //return = 0;
+      throw std::invalid_argument("");
+    }
+    return m_data[elemNum];
+  }
+
 
 };
