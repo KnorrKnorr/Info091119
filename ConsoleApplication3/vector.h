@@ -55,6 +55,8 @@ public:
   cvector()
   {
     //even standard constructor immediately allocates one element 
+    // -that makes sense bc the user would not creace an instace of cvektor without  the
+    // -willing to save minimum one element into it
     m_data = new T[1];
     m_sizenow = 0;
     m_capnow = 1;
