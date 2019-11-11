@@ -160,7 +160,7 @@ public:
     return m_data[elemNum];
   }
 
-  T& operator[](size_t elemNum) const
+  const T& operator[](size_t elemNum) const
   {
     //if m_data exists and element m_data[elemNum] exists, return m_data[elemNum]
     if (elemNum >= m_sizenow || m_data == nullptr)
