@@ -18,14 +18,19 @@ private:
   void resizelocal(size_t newCap)
   {
     //mk temp array with size newsize
-    //if newCap is bigger than used space
+    //if noCap is bigger than used space
     //-copy all elements of old array to new array, size stays same, cap gets bigger
     //-else if newCap is equal or smaller than used space
     //-fullfill the new array with old data, size gets smaller, cap get smaller
     //delete old array
     //m_data points to new array
     //temp array pointer to nullptr
-    //m_capnow = newCap
+    //m_capnow = 
+
+    if (newCap < 0)
+    {
+      throw std::invalid_argument("");
+    }
     T* newDataTemp;
     newDataTemp = new T[newCap];
 
@@ -133,6 +138,11 @@ public:
 
   void resize(size_t value)
   {
+    //call resize local
+    if (value < 0)
+    {
+      throw std::invalid_argument("");
+    }
     //call resizelocal
     resizelocal(value);
   }
